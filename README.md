@@ -1,5 +1,115 @@
 # Java-Knowledge
 
+## Static Keyword
+When you declare a variable or a method as static, it belongs to the class, rather than a specific instance. This means that only one instance of a static member exists, even if you create multiple objects of the class, or if you don’t create any. It will be shared by all objects.
+
+### Static Variables
+
+```java
+public class Counter {
+  public static int COUNT = 0;
+  Counter() {
+    COUNT++;
+  }
+}
+```
+
+The COUNT variable will be shared by all objects of that class. When we create objects of our Counter class in main, and access the static variable.
+
+```java
+public class MyClass {
+  public static void main(String[] args) {
+    Counter c1 = new Counter();
+    Counter c2 = new Counter();
+    System.out.println(Counter.COUNT);
+  }
+}
+// Outputs "2"
+```
+
+
+### Static Methods
+It is used for altering static contents of the class. There are some restrictions of static methods :
+
+1. Static method can not use non-static members (variables or functions) of the class.
+2. Static method can not use this or super keywords.
+
+```java
+public class Counter {
+  public static int COUNT = 0;
+  Counter() {
+    COUNT++;
+  }
+
+  public static void increment(){
+    COUNT++;
+  }
+}
+```
+
+Static methods can also be called from instance of the class.
+
+```java
+public class MyClass {
+  public static void main(String[] args) {
+    Counter.increment();
+    Counter.increment();
+    System.out.println(Counter.COUNT);
+  }
+}
+// Outputs "2"
+```
+
+### Static Blocks
+Static code blocks are used to initialise static variables. These blocks are executed immediately after declaration of static variables.
+
+```java
+public class Saturn {
+  public static final int MOON_COUNT;
+
+  static {
+    MOON_COUNT = 62;
+  }
+}
+
+public class Main {
+  public static void main(String[] args) {
+    System.out.println(Saturn.MOON_COUNT);
+  }
+}
+// Outputs "62"
+```
+
+
+### Static Nested Classes
+A class can have static nested class which can be accessed by using outer class name.
+
+
+```java
+public class Outer {
+
+  public Outer() {
+  }
+
+  public static class Inner {
+    public Inner() {
+    }
+  }
+}
+```
+In above example, class Inner can be directly accessed as a static member of class Outer.
+
+```java
+public class Main {
+  public static void main(String[] args) {
+    Outer.Inner inner = new Outer.Inner();
+  }
+}
+```
+
+One of the use case of static nested classes in Builder Pattern popularly used in java.
+
+
 ## Final Keyword
 Final keyword is a non-access modifier used for classes, attributes & methods, which makes them non-changeable (impossible to inherit/reassign/override).
 
