@@ -144,6 +144,4 @@ The thread model consists of various states.
 5. Terminated Stage: This state stops a thread's execution immediately. A terminated thread means that it is dead and is no longer available for use.
 
 ## String, StringBuffer, StringBuilder
-
-
-## Mutable & Immutable
+![alt text](image.png)
